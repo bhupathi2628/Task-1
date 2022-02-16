@@ -16,10 +16,10 @@ output "my_web_sg" {
 
 output "public_web_subnets" {
   description = "private subnet ids"
-  value       = module.aws_vpc.public_subnets[*]
+  value       = module.aws_vpc.public_subnets
 }
 
 output "private_app_subnets" {
   description = "private subnet ids"
-  value       = module.aws_vpc.private_subnets[*]
+  value       = module.aws_vpc.private_subnets
 }
