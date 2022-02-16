@@ -19,7 +19,7 @@ variable "instance_type" {
 variable "key_name" {
   description = "This is key name that used to login to the instance"
   type        = string
-  default     = "jenkinsserverkey" 
+  default     = "my-serverkey" 
 }
 
  variable "public_subnet_ids" {

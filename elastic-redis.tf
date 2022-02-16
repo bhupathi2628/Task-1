@@ -21,7 +21,7 @@ module "redis" {
   family            = "redis6.x"
   description       = "Test elasticache redis."
 
-  subnet_ids =  ["subnet-0510ee49739b6be7d", "subnet-0b32190dea7501aab","subnet-0c94eca07bb1fd137"]
+  subnet_ids =  module.aws_vpc.private_subnets
   vpc_id     = module.aws_vpc.aws_vpc_id
 
   ingress_cidr_blocks = ["0.0.0.0/0"]
