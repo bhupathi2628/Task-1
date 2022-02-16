@@ -7,7 +7,7 @@ resource "aws_instance" "ec2_instance" {
 
   ami           = var.ami
   instance_type = var.instance_type
-  subnet_id                   = element([var.subnet_id], count.index)
+  subnet_id                   = element(var.subnet_id, count.index)
   key_name                    = var.key_name
   monitoring                  = var.monitoring
   get_password_data           = var.get_password_data
