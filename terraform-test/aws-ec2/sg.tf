@@ -2,7 +2,7 @@ module "mi-sg" {
   source      = "github.com/bhupathi2628/Task-1.git//modules/security_group?ref=master"
   name        = "web_security-group"
   description = "web_security-group"
-  vpc_id      = var.vpc_id
+  vpc_id      = data.aws_vpcs.vpc_id.id
 
   # Ingress rules #
   ingress_with_self = [

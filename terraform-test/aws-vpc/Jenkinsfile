@@ -1,0 +1,26 @@
+pipeline{
+    agent any
+    stages{
+        stage('git Checkout'){
+            steps{
+                git branch: 'master', url: 'https://github.com/bhupathi2628/Task-1.git'
+            }
+        }
+        stage('terrafrom init'){
+            steps{
+                sh 'terraform init'
+            }
+        }
+        stage('terrafrom plan'){
+            steps{
+                sh 'terraform plan'
+            }
+        }
+
+        stage('terrafrom apply'){
+            steps{
+                sh 'terraform apply --auto-approve'
+            }
+        }
+    }
+}

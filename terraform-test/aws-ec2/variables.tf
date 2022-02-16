@@ -28,11 +28,11 @@ variable "key_name" {
   default = "subnet-07e7e3dfded0d3b61"
 }
   
-variable "vpc_id" {
-  description = "This is vpc where we lunch instance"
-  type = string
-  default ="vpc-0fb1f05fbe81f2e2a"
-}
+# variable "vpc_id" {
+#   description = "This is vpc where we lunch instance"
+#   type = string
+#   default ="vpc-0fb1f05fbe81f2e2a"
+# }
 
 
 
