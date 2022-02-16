@@ -76,4 +76,3 @@ resource "aws_elasticache_replication_group" "redis" {
 
 #   tags = var.tags
 # }
-
