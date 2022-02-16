@@ -15,7 +15,7 @@ resource "aws_elasticache_replication_group" "redis" {
   maintenance_window         = var.maintenance_window
   snapshot_window            = var.snapshot_window
   snapshot_retention_limit   = var.snapshot_retention_limit
-  final_snapshot_identifier  = var.final_snapshot_identifier
+  #final_snapshot_identifier  = var.final_snapshot_identifier
   #automatic_failover_enabled = var.automatic_failover_enabled && var.number_cache_clusters > 1 ? true : false
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
   #multi_az_enabled           = var.multi_az_enabled
@@ -24,7 +24,7 @@ resource "aws_elasticache_replication_group" "redis" {
   transit_encryption_enabled  = var.global_replication_group_id == null ? var.transit_encryption_enabled : null
   #auth_token                  = var.auth_token != "" ? var.auth_token : null
   kms_key_id                  = var.kms_key_id
-  global_replication_group_id = var.global_replication_group_id
+  #global_replication_group_id = var.global_replication_group_id
 
   apply_immediately = var.apply_immediately
 

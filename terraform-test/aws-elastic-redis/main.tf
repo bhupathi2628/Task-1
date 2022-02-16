@@ -3,9 +3,8 @@ module "redis" {
   source = "github.com/bhupathi2628/Task-1.git//modules/elasticcache-redis?ref=master"
 
   name_prefix           = "redis-demo-example"
-  number_cache_clusters = 2
+  number_cache_clusters = 1
   node_type             = "cache.t3.micro"
-
   engine_version            = "5.0.6"
   port                      = 6379
   snapshot_retention_limit  = 7

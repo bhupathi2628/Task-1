@@ -5,6 +5,7 @@ variable "name_prefix" {
 
 variable "number_cache_clusters" {
   type        = number
+  default = 2
   description = "The number of cache clusters (primary and replicas) this replication group will have."
 }
 
