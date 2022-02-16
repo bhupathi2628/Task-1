@@ -4,25 +4,26 @@ module "redis" {
 
   name_prefix           = "redis-demo-example"
   number_cache_clusters = 2
-  node_type             = var.node_type
+  node_type             = "cache.t3.micro"
 
   engine_version            = "5.0.6"
   port                      = 6379
   snapshot_retention_limit  = 7
+  final_snapshot_identifier = "redis-final-snapshot-name"
 
   automatic_failover_enabled = true
-  multi_az_enabled           = false
+  multi_az_enabled           = true
 
   at_rest_encryption_enabled = true
   transit_encryption_enabled = true
-  #auth_token                 = "1234567890asdfghjkl"
+  auth_token                 = "1234567890asdfghjkl"
 
   apply_immediately = true
   family            = "redis6.x"
   description       = "Test elasticache redis."
 
-  subnet_ids = var.subnets
-  vpc_id     = var.vpc_id
+  subnet_ids =  ["subnet-0510ee49739b6be7d", "subnet-0b32190dea7501aab","subnet-0c94eca07bb1fd137"]
+  vpc_id     = "vpc-0fb1f05fbe81f2e2a"
 
   ingress_cidr_blocks = ["0.0.0.0/0"]
 
