@@ -1,43 +1,31 @@
-
-pipeline {
-  agent any
-  stages {
-        stage('Build') {
-          steps {
-            sh 'echo "building the repo"'
-          }
-        }
-
-    stage('Test') {
-      steps {
-        sh 'python3 test_app.py'
-      }
+pipeline{
+    agent any
+        environment {
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
 
-    stage('Deploy')
-    {
-      steps {
-        echo "deploying the application"
-      }
+    stages{
+        stage('git Checkout'){
+            steps{
+                git branch: 'master', url: 'https://github.com/bhupathi2628/Task-1.git'
+            }
+        }
+        stage('terrafrom init'){
+            steps{
+                sh 'terraform init'
+            }
+        }
+        stage('terrafrom plan'){
+            steps{
+                sh 'terraform plan'
+            }
+        }
+
+        stage('terrafrom apply'){
+            steps{
+                sh 'terraform apply --auto-approve'
+            }
+        }
     }
-
-  }
-
-  post {
-        always {
-            echo 'The pipeline completed'
-            junit allowEmptyResults: true, testResults:'**/test_reports/*.xml'
-        }
-        success {
-            
-            sh "sudo nohup python3 app.py > log.txt 2>&1 &"
-            echo "Flask Application Up and running!!"
-	    sh 'echo $?'
-	    sh "git tag ${env.BUILD_NUMBER}"
-        }
-        failure {
-            echo 'Build stage failed'
-            error('Stopping early…')
-        }
-      }
 }

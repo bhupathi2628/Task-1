@@ -11,7 +11,7 @@ module "aws_ec2_web_server" {
   instance_type               = var.instance_type
   key_name                    = var.key_name
   vpc_security_group_ids      = [module.mi-sg.security_group_id]
-  subnet_id                   = var.public_subnet_ids
+  subnet_id                   = module.aws_vpc.public_subnets
   associate_public_ip_address = true
 
   root_block_device = [
